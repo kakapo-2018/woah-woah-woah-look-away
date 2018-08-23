@@ -1,25 +1,4 @@
-const students = [
-  'Bella',
-  'Ben',
-  'Cam',
-  'Dani',
-  'Emil',
-  'Kyoko',
-  'Leslie',
-  'Lexi',
-  'Lianna',
-  'Luke',
-  'Marie',
-  'Matt',
-  'Nat',
-  'Richard',
-  'Rob',
-  'Robbie',
-  'Welli',
-  'Winston',
-  'Yuzuki',
-  'Zane'
-]
+const students = require('./students.json')
 
 function shuffle(a) {
     var j, x, i;
@@ -33,13 +12,11 @@ function shuffle(a) {
 }
 
 function randomiseGroups (groupCount) {
-  let shuffled = shuffle(students)
-  let groups = {}
-  for (var i = 0; i < groupCount; i++) {
-    groups[i] = []
-  }
-  while(shuffled.length > 0) {
-    let student = shuffled.pop()
+  const shuffled = shuffle(students)
+  const groups = {}
+  for (var i = 0; i < groupCount; i++) groups[i] = []
+  while(shuffled.length) {
+    const student = shuffled.pop()
     let grouped = false
     while (!grouped) {
       const groupNum = Math.floor(Math.random() * groupCount)
@@ -50,7 +27,6 @@ function randomiseGroups (groupCount) {
       }
     }
   }
-
   return groups
 }
 
